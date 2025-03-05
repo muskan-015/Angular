@@ -9,7 +9,10 @@
   <h1>{{ message }}, {{ userName }}</h1>
 
 <input 
-  type="text" 
-  [(ngModel)]="userName" 
-  placeholder="Enter your name"
+type="text" 
+[(ngModel)]="userName" 
+(input)="validateName()" 
+placeholder="Enter your name"
 >
+
+<p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
