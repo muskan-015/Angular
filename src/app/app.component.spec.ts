@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      declarations: [AppComponent], 
     }).compileComponents();
   });
 
@@ -14,16 +14,26 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'my-angular-app' title`, () => {
+  it(`should have the correct message`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.message).toEqual('my-angular-app');
+    expect(app.message).toEqual('Hello from BridgeLabz'); 
   });
 
-  it('should render title', () => {
+  it('should render the correct message', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, my-angular-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello from BridgeLabz'); 
+  });
+
+  it('should display the BridgeLabz logo', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const imgElement = compiled.querySelector('img');
+    
+    expect(imgElement).toBeTruthy(); 
+    expect(imgElement?.src).toContain('./assets/BL_logo_square_jpg.jpg');
   });
 });
